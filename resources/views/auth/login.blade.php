@@ -10,8 +10,8 @@
     <div class="container-contact">
         <div class="wrap-contact1">
             {{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
-            
-                        
+
+
              <div  class="wrap-input">
              {{ Form::label('', '', ['class' => 'fa fa-user']) }}
                 {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
@@ -24,7 +24,7 @@
                 </ul>
                 @endif
             </div>
-            
+
              <div  class="wrap-input">
              {{ Form::label('', '', ['class' => 'fa fa-lock']) }}
                 {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
@@ -37,13 +37,13 @@
                 </ul>
                 @endif
             </div>
-            
-            <div class="container-form-btn">                
+
+            <div class="container-form-btn">
                 {{ Form::submit('Login', ['class' => 'my-button']) }}
             </div>
-            <div  class="wrap-input">
-                 <p> Se non hai già un account <a  href="{{ route('register') }}">registrati</a></p>
-             </div> 
+
+
+
             {{ Form::close() }}
         </div>
     </div>

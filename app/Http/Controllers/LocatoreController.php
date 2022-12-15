@@ -151,7 +151,7 @@ class LocatoreController extends Controller
         return redirect()->route('profilo')
             ->with('status', 'Profilo aggiornato correttamente!');
     }
-
+///
     public function deleteAnnuncio($id)
     {
         $this->_annuncioModel->deleteAnnuncio($id);
@@ -292,7 +292,7 @@ class LocatoreController extends Controller
             }
         }
         return redirect()->route('home');
-        
-        
+
+
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Resources\Alloggi;
 class Messaggistica extends Model
 {
     public function getChat($id){
+
         //tabella delle chat dove $id é il mittente
         $chatMittente = Messaggi::where("mittente",$id)->select("destinatario","id_alloggio")->get();
         //tabella delle chat dove $id è destinatario
@@ -26,7 +27,7 @@ class Messaggistica extends Model
                 }
             }
         }
-        
+
         $result = [];
         $i = 1;
         foreach(array_keys($contatti) as $key_user){
@@ -39,7 +40,7 @@ class Messaggistica extends Model
 
             }
         }
-        
+
         return $result;
     }
 

@@ -1,3 +1,0 @@
-<a href="{{route('profilo')}}" class="w3-bar-item w3-button w3-hide-small" title="Gestione Profilo"><i class="fa fa-info-circle"></i> Profilo</a>
-<a href="{{route('messaggi')}}" class="w3-bar-item w3-button w3-hide-small" title="Gestione Messsaggi"><i class="fa fa-paper-plane"></i> Messaggi</a>
-<a href="{{route('addHome')}}" class="w3-bar-item w3-button w3-hide-small" title="Inserisci una nuova offerta nel sito"><i class="fa fa-plus"></i> Aggiungi Offerta</a>

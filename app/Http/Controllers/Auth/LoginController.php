@@ -28,44 +28,44 @@ class LoginController extends Controller
      */
     //  protected $redirectTo = RouteServiceProvider::HOME;
     /**
-     * Override del metodo redirectTo che definisce la homepage per i diversi utenti
+     * Override del metodo redirectTo che definisce la homepage per i diversi tipi utenti divisi per livello
      */
 
     protected function redirectTo() {
-        $livello= auth()->user()->livello; // estraiamo dall'utente attualmente autenticato 
+        $livello= auth()->user()->livello; // estraggo il livello dall'utente attualmente autenticato
         switch($livello){
-            case 0: return '/Admin';
-                    break;         
-            
-            case 1: return '/Locatore';
+            case 'concessionario': return '/Concessionario';
                     break;
 
-            case 2: return '/Locatario';
+            case 'cliente': return '/Cliente';
                     break;
-            
-            default: return '/';        
+
+            case 'fornitore': return '/Fornitore';
+                    break;
+
+            default: return '/';
         }
     }
     /**
      * Il login va fatto con lo username anzichè con la mail
      * quindi dobbiamo sovrascriver il metodo username che nel trait
      * AuthenticatesUsers ritorna la mail
-     * 
+     *
      */
     public function username(){
-        return 'username';      
+        return 'username';
     }
 
     /**
      * Create a new controller instance.
-     * Questo metodo definisce le eccezioni alla regola definita come principale, o meglio consente l'acceso al mio controller solo agli utenti 
+     * Questo metodo definisce le eccezioni alla regola definita come principale, o meglio consente l'acceso al mio controller solo agli utenti
      * 'guset' ad esccezione della funzione di logout che non è riservata solo agli utenti guest ma atutti quanti gli utenti.
      * Questo perchè dal trate eredita anche il metodo di logout che non può essere a differenza del login usato solo da chi non è registrato
-     * 
+     *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout'); 
+        $this->middleware('guest')->except('logout');
     }
 }

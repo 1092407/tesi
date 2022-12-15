@@ -25,20 +25,23 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('isAdmin', function($user){
-            return $user->hasLivello(0);
+        Gate::define('isConcessionario', function($user){
+            return $user->hasLivello('concessionario');
         });
 
-        Gate::define('isLocatore',function($user){
-            return $user->hasLivello(1);
+        Gate::define('isCliente',function($user){
+            return $user->hasLivello('cliente');
         });
 
-        Gate::define('isLocatario', function($user){
-            return $user->hasLivello(2);
+
+        Gate::define('isFornitore', function($user){
+            return $user->hasLivello('fornitore');
         });
+
+        //questa probabilmente non la uso ma per ora la lascio
         Gate::define('isLoggato',function($user){
             return isset($user);
         });
-        
+
     }
 }

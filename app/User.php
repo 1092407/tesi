@@ -12,11 +12,11 @@ class User extends Authenticatable  //Componente che gestisce l'autenticazione
 
     /**
      * The attributes that are mass assignable.
-     * Attributi definibili mediante una form
+     * Attributi definibili mediante una form,mentre gli altri no
      * @var array
      */
     protected $fillable = [
-        'foto_profilo', 'name', 'cognome', 'sesso', 'data_nascita', 'email', 'username', 'password', 'cellulare', 'livello', 'descrizione'
+         'name', 'cognome', 'codicefiscale',  'username', 'password', 'livello', 'auto', 'targa','datavendita'
     ];
 
     /**
@@ -36,10 +36,11 @@ class User extends Authenticatable  //Componente che gestisce l'autenticazione
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
+    //serve per ricavare il livello di un utente oer poi gestire identificazione e autorizzazione
     public function hasLivello($livello){
         $livello = (array)$livello;
         return in_array($this->livello, $livello);
-        
+
     }
 }

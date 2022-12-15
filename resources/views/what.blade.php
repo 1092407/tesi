@@ -5,23 +5,25 @@
 @section('content')
 <div class="w3-container w3-padding-32" id="what">
 
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center"><b>Che cos'è UniRent?</b></h3>
-    <p align="center">È l'innovativo servizio,<br>
-        completamente gratuito per gli studenti delle università convenzionate,<br>
-        che ricerca, seleziona e mette a disposizione<br>
-        case, stanze e posti letto da prendere in locazione.
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center"><b>Cosa è SmartAuto?</b></h3>
+    <p align="center">Una web app innovativa e <br>
+        completamente gratuita per i clienti del nostro concessionario,<br>
+
+        dove puoi vedere i modelli disponibili alla vendita
+        <br>
+        e monitorare lo stato della batteria della tua auto elettrica dopo averla acquistata.
     </p>
 
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center"><b>Sei uno studente?</b></h3>
-    <p align="center">Cerca l'alloggio perfetto vicino alla tua università.<br>
-        Prenota una visita selezionando una data disponibile nel calendario, dopo che il nostro Team ti<br>
-        avrà ricontattato per confermartela, ti accompagneremo noi a visitare gli immobili scelti.<br>
-        Se l'appartamento ti piace, il team di <b>UniRent</b> ti affiancherà nel formalizzare la Proposta di locazione<br>
-        e la successiva stipula del contratto di affitto, a registrarlo ci pensiamo noi in maniera rapida e sicura.
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center"><b>Sei già un cliente?</b></h3>
+    <p align="center">Corri subito al login<br>
+
+    Potrai vedere lo stato attuale della tua batteria <br>
+        In caso di dubbi o problemi potrai tranquillamente contattarci per ricevere assistenza<br>
+
     </p>
 
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center"><b>Sei un proprietario?</b></h3>
-    <p align="center">Se hai un appartamento che vorresti affittare, contattaci subito.<br>
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center"><b>Sei un potenziale cliente?</b></h3>
+    <p align="center">Consulta i modelli disponibili e corri subito a trovarci se sei interessato<br>
         Non perdere un solo istante!<br>
         Un servizio facile e veloce.
     </p>

@@ -1,1 +1,0 @@
-<a href="{{route('profilo_locatore')}}" class="w3-bar-item w3-button w3-hide-small" title="Gestione Profilo"><i class="fa fa-info-circle"></i> Profilo</a>

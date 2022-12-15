@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <title>Unirent | @yield('title', 'HomePage')</title>
+    <title>SmartAuto | @yield('title', 'HomePage')</title>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,10 +31,10 @@
         <!-- First Parallax Image with Logo Text -->
         <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
             <div class="w3-display-middle" style="white-space:nowrap;">
-              <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">UniRent</span>
+              <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">SmartAuto</span>
             </div>
             <div class="w3-display-middle" style="white-space:nowrap;">
-              <span class="logo w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Cerca l'appartamento su misura per i tuoi studi</span>
+              <span class="logo w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Cerca e controlla la tua auto elettrica</span>
             </div>
         </div>
 
@@ -44,8 +44,8 @@
         </div>
 
         <footer class="w3-center w3-black w3-padding-16" style='bottom:0px;'>
-            UniRent | Via Brecce Bianche, 12 - 60131 Ancona (AN) ITALIA<br>
-            <a  href="mailto:info@unirent.it">info@unirent.it</a> | <span itemprop="telephone">+39 347 58 30 387</span>
+            SmartAuto gestione web app | Via Brecce Bianche, 12 - 60131 Ancona (AN) ITALIA<br>
+            <a  href="mailto:info@smartauto.it">info@smartauto.it</a> | <span itemprop="telephone">+39 334 225 41 94</span>
             <br><a href="{{route('privacy')}}"> Privacy e Cookie Policy</a> | <a href="{{route('termini_condizioni')}}"> Termini e Condizioni </a>
             <ul class="social-media-list">
                     <li><a target="_blank" href="https://www.facebook.com/"><img src="{{asset('img/social/facebook.png')}}"  title="Facebook" alt="Facebook icon"></a></li>
@@ -53,10 +53,7 @@
                     <li><a target="_blank" href="https://www.instagram.com/accounts/login/"><img src="{{asset('img/social/instagram.png')}}" title="Instagram" alt="Instagram icon"></a></li>
             </ul>
 
-            Scarica la documentazione<br>
-            <div class="credits">
-                <a  href="{{asset('../resources/download/Progetto_TW.pdf')}}" download="Progetto_TW_GRP_06.pdf"><b>QUI!</b></a>
-            </div>
+
         </footer>
     </body>
 </html>
