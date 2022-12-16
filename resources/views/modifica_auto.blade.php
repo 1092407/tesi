@@ -77,7 +77,7 @@
 
 
            <div class="wrap-input  rs1-wrap-input">
-        {{ Form::label('','', ['class' => 'fa fa-user-circle ']) }}
+        {{ Form::label('','', ['class' => 'fa fa-picture-o ']) }}
         {{ Form::label('foto', 'Immagine ', ['class' => 'label-input-card']) }}
         {{ Form::file('foto', ['class' => 'input-card', 'id' => 'foto']) }}
         @if ($errors->first('foto'))

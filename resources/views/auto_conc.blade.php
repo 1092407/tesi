@@ -46,16 +46,21 @@
 
 
                       <br>
+
+                      <div style="float:right;">
                       <a href = "{{route('auto.toupdate',$auto->id)}}" class="w3-button w3-blue">Modifica</a>
+                        </div>
 
 
-
-
+               <div style="float:right;">
                 <form action="{{ route('auto.delete', $auto->id)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <button class="w3-button w3-red" type="submit" onclick= "return confirm('Sei sicuro di voler eliminare questa auto?')">Elimina</button>
               </form>
+                </div>
+
+
 
                 </div>
 
