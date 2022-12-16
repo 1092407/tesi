@@ -20,7 +20,10 @@ Route::view('/What','what')->name('what');  //cosa facciamo
 Route::view('/Privacy','privacy_cookies')->name('privacy');  //pagina info privacy
 Route::view('/Regolamento','termini_condizioni')->name('termini_condizioni'); //pagina info varie
 Route::get('/Auto','PublicController@showAuto')->name('lista_auto'); //per vedere marca e modelli disponibili per acquisto
+Route::get('/Auto/{auto}','PublicController@ShowThisAuto')->name('auto_dettaglio'); //per andare a vedere dettagli di un'auto
 
+
+Route::get('/provachart','examplechartController@index')->name('prova'); //per fare una prova e vedere se funzionava cahrt, dopo da sistemare
 
 //ROTTE CLIENTI
 Route::get('/Cliente','ClienteController@index')->name('cliente')->middleware('can:isCliente');  //per andare sulla home del cliente

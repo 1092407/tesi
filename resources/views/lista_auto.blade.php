@@ -1,4 +1,4 @@
-@extends('layouts.concessionario')
+@extends('layouts.public')
 
 @section('title', 'Lista auto')
 
@@ -29,7 +29,8 @@
 
     @foreach ( $auto as $automobile)
 
-    <a href="{{route('auto',[$automobile->id])}}">
+
+    <a href="{{route('auto_dettaglio',[$automobile->id])}}">
         <div class="w3-third w3-container w3-margin-bottom annuncio" >
             @include('helpers/alloggioImage',['attrs'=>"w3-hover-opacity cursor",'imgFile'=>$automobile->foto])
             <div class="w3-container w3-white">

@@ -24,6 +24,12 @@ class PublicController extends Controller{
     }
 
 
+   public function ShowThisAuto($auto){
+        $auto = $this->auto->getthisauto($auto);  // funzione definita in Users model e lanciata qui
+        return view('auto_dettaglio_public')
+                ->with('auto',$auto);
+    }
+
 
 //serve per vedere la homepage
     public function showHomepage(){

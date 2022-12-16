@@ -43,6 +43,7 @@
             @yield('content')
         </div>
 
+
         <footer class="w3-center w3-black w3-padding-16" style='bottom:0px;'>
             SmartAuto gestione web app | Via Brecce Bianche, 12 - 60131 Ancona (AN) ITALIA<br>
             <a  href="mailto:info@smartauto.it">info@smartauto.it</a> | <span itemprop="telephone">+39 334 225 41 94</span>
