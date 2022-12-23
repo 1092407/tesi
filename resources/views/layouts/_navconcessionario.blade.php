@@ -9,6 +9,8 @@
   <a href="{{route('gestisciclienti')}}" class="w3-bar-item w3-button w3-hide-small" title="visualizza lista clienti "><i class="fa fa-users"></i> CLIENTI </a>
 <a href="{{route('registraclienti')}}" class="w3-bar-item w3-button w3-hide-small" title="aggiungi nuovo cliente"><i class="fa fa-user-plus"></i> AGGIUNGI CLIENTI </a>
 
+<a href="{{route('messaggi')}}" class="w3-bar-item w3-button w3-hide-small" title="controlla i tuoi messaggi "><i class="fa fa-telegram"></i> I tuoi messaggi  </a>
+
 
 
 

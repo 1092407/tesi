@@ -23,6 +23,8 @@ Route::get('/Auto','PublicController@showAuto')->name('lista_auto'); //per veder
 Route::get('/Auto/{auto}','PublicController@ShowThisAuto')->name('auto_dettaglio'); //per andare a vedere dettagli di un'auto
 
 
+
+//è una prova per vedere se funzionano charts
 Route::get('/provachart','examplechartController@index')->name('prova'); //per fare una prova e vedere se funzionava cahrt, dopo da sistemare
 
 //ROTTE CLIENTI
@@ -54,6 +56,15 @@ Route::get('/Concessionario/Auto/{auto}','ConcessionarioController@ShowThisAuto'
 Route::delete('/Concessionario/EliminaAuto/{auto}','ConcessionarioController@deleteauto')->name('auto.delete');  // per eliminare
 Route::put('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@updateauto')->name('auto.update');// aggiorna dati
 Route::get('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@showAutoToUpdate')->name('auto.toupdate'); //per vedere dati attualemte presenti prima di fare modifiche
+
+
+
+//ROTTE PER MESSAGGI : le usano tutti  e le funzioni chiamate sono nel MessaggiController
+//il middleware pertanto è basato solo sulla semplice autentificazione dell'utente in fase di login
+
+Route::get('/Messaggi', 'MessaggiController@showMessaggi')->name('messaggi')->middleware('auth'); //il loggato vede i suoi messaggi
+Route::get('/Chat/{destinatario}', 'MessaggiController@showChat')->name('conversazione')->middleware('auth');  //il loggato vede la conversazione che ha con un certo destinatario
+Route::post('/Send/{destinatario}','MessaggiController@rispondiMessaggio')->name('messaggio.send')->middleware('auth'); //serve,una volta aperta la conversazione con un certo destinatario, a rispondergli
 
 
 /*

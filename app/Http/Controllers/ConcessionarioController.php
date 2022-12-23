@@ -12,6 +12,8 @@ use App\Models\Resources\Auto;
 use App\Http\Requests\NewAutoRequest;
 use Illuminate\Support\Facades\File;
 
+use App\Models\Resources\Messaggi;
+
 class ConcessionarioController extends Controller{
 
  protected $users;   // sarebbe users model
@@ -41,6 +43,20 @@ class ConcessionarioController extends Controller{
         $appoggio2=Hash::make($appoggio1);    // password affinchè poi il login abbia successo
         $cliente['password']=$appoggio2;        // per il nuovo cliente che crea il concessionario  con questa funzione
         $cliente->save();  //salva dati nel db
+
+
+        //vedo se qui riesco a creare messaggio automatico quando creo un cliente nuovo
+
+       $messaggio = new Messaggi([
+            'contenuto' => "Benvenuto nel nostro servizio online! Tramite questa chat potrai chiedere ulteriori informazioni e assistenza ogni volta che risulti necessario ",
+            'data' => Carbon::now()->addHours(2),
+            'mittente' => auth()->user()->id,
+            'destinatario' => $cliente->id
+
+        ]);
+
+        $messaggio->save();
+         //funziona correttamente
 
         return redirect()->route('concessionario')
             ->with('status', 'Cliente inserito correttamente!');  //gli segnalo che è andato tutto correttamente secondo i piani
