@@ -14,6 +14,23 @@
 
 @endsection
 
+<h2>Qui puoi vedere tutti i modelli attualmente disponibili ed effettuare una ricerca specificando la marca (es:fiat,audi,hyundai...)</h2><br>
+
+<h4>Scrivi un nome nella barra di ricerca e la pagina si riaggiornerà con i risultati corrisposndenti alla tua ricerca.
+E' implementata la ricerca parziale :  ad esempio scrivendo "fia" o solo "f" compariranno tutte le auto "fiat"
+</h4><br>
+
+
+
+   <div class="w3-container" style="padding-top:10px">
+    <h4>Effettua qui sotto la ricerca  di auto tramite il nome della marca </h4>
+    {!! Form::open(array('route'=>'search','method'=>'GET','id'=>'ricerca')) !!}
+    {{ Form::text('name',isset($request) ? $request->name : false,array('id'=>'my-searchbar','placeholder'=>'inserisci qui il nome che intendi cercare')) }}
+    {{ Form::submit('Cerca',array('class'=>'w3-button'))}}
+    {!! Form::close() !!}
+    <hr>
+     </div>
+
 
 @isset($auto)
 

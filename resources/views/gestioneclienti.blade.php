@@ -63,7 +63,7 @@
               <form action="{{ route('cliente.delete', $cliente->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button class="w3-button w3-red" type="submit" onclick= "return confirm('Sei sicuro di voler eliminare questo membro dello staff?')">Elimina</button>
+                <button class="w3-button w3-red" type="submit" onclick= "return confirm('Sei sicuro di voler eliminare questo cliente?')">Elimina</button>
               </form>
             </td>
 

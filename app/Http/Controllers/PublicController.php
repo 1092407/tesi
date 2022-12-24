@@ -33,8 +33,25 @@ class PublicController extends Controller{
 
 //serve per vedere la homepage
     public function showHomepage(){
+    return view('homepage');
+    }
 
-                        return view('homepage');
+
+//ricerco auto in base al nome della marca
+     public function CercaAuto(Request $ricerca)  {
+
+     $nomeinserito=$ricerca->name; //prendo il nome che ho inserito per poi  confrontarlo con quelli nel db
+     $nomeinserito=trim( $nomeinserito);  //elimino gli spazi se ci sono
+
+   // estraggo da tutte le auto che corrispondono alla ricerca
+    $auto = Auto::where(function($nome) use ($nomeinserito){
+            $nome->where('marca','LIKE', $nomeinserito.'%');
+        })->select("id","marca","modello","foto")->get();
+
+
+        return view('lista_auto')
+           ->with('auto',$auto) ;
+
     }
 
 

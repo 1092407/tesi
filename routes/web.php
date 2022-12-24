@@ -22,6 +22,7 @@ Route::view('/Regolamento','termini_condizioni')->name('termini_condizioni'); //
 Route::get('/Auto','PublicController@showAuto')->name('lista_auto'); //per vedere marca e modelli disponibili per acquisto
 Route::get('/Auto/{auto}','PublicController@ShowThisAuto')->name('auto_dettaglio'); //per andare a vedere dettagli di un'auto
 
+Route::get('/Search','PublicController@CercaAuto')->name('search');  //per cercare auto secondo la sua marca (es:fiat,audi,...)
 
 
 //è una prova per vedere se funzionano charts
