@@ -38,23 +38,16 @@
 
 @auth
                 @can('isConcessionario')
-
                 @include('layouts/_navconcessionario')
                 @endcan
 
-
-<!-- per cliente e fornitore intanto lascio qui una parte poi da finire più avanti -->
-
                 @can('isCliente')
-
-
+                @include('layouts/_navcliente')
                 @endcan
 
                 @can('isFornitore')
-
-
-                @endcan
-        @endauth
+                <!-- per  fornitore intanto lascio qui una parte poi da finire più avanti se lo metto effettivamente  -->
+                @endcan @endauth
 
 
 <div>
