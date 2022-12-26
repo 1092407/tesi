@@ -27,7 +27,7 @@ Route::get('/Search','PublicController@CercaAuto')->name('search');  //per cerca
 
 //è una prova per vedere se funzionano charts
 Route::get('/provachart','examplechartController@index')->name('prova'); //per fare una prova e vedere se funzionava cahrt, dopo da sistemare
-
+Route::get('/provachart2','examplechartController@provamex')->name('prova2');
 
 //ROTTE CLIENTI
 Route::view('/Cliente','homecliente')->name('cliente')->middleware('can:isCliente');  //per andare sulla home del cliente

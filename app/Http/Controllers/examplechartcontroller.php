@@ -6,6 +6,7 @@ use App\Charts\examplechart;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Resources\Auto; //la uso per fare qualche prova sui chart
+use App\Models\Resources\Messaggi;
 
 use Illuminate\Support\Facades\Log;
 
@@ -30,7 +31,28 @@ class examplechartController extends Controller
         $lab[$i]="";
         }
 
+        $chart->labels(array_values($lab));
+        $chart->dataset('dati ', 'line', array_values($valori)); //così funziona
 
+           return view('sample_view', compact('chart'));
+
+      }
+
+      public function provamex(){
+        $chart = new examplechart;
+
+        $allid=Messaggi::select("id")->get()->toArray();
+        $valori=[];
+
+        for ($i=0;$i<count($allid);$i++){
+        $app=Messaggi::where("id",$allid[$i])->value("id");
+        $valori[$i]=$app;
+        }
+
+        $lab=[];
+        for ($i=0;$i<count($allid);$i++){
+        $lab[$i]="";
+        }
 
         $chart->labels(array_values($lab));
         $chart->dataset('dati ', 'line', array_values($valori)); //così funziona

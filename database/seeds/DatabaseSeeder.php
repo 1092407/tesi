@@ -27,6 +27,22 @@ class DatabaseSeeder extends Seeder {
         ]);
 
 
+        DB::table('messaggi')->insert([
+
+        ['contenuto' => 'Benvenuto nel nostro servizio online! Tramite questa chat potrai chiedere ulteriori informazioni e assistenza ogni volta che risulti necessario ' , 'data' => Carbon::create('2023','01','01','19','30','00') , 'mittente' => 1 , 'destinatario' => 2,'created_at' => Carbon::create('2023','01','01'), 'updated_at' => Carbon::create('2023','01','01')],
+        ['contenuto' => 'Benvenuto nel nostro servizio online! Tramite questa chat potrai chiedere ulteriori informazioni e assistenza ogni volta che risulti necessario ' , 'data' => Carbon::create('2023','01','01','19','30','00') , 'mittente' => 1 , 'destinatario' => 3,'created_at' => Carbon::create('2023','01','01'), 'updated_at' => Carbon::create('2023','01','01')],
+        ['contenuto' => 'Benvenuto nel nostro servizio online! Tramite questa chat potrai chiedere ulteriori informazioni e assistenza ogni volta che risulti necessario ' , 'data' => Carbon::create('2023','01','01','19','30','00') , 'mittente' => 1 , 'destinatario' => 4,'created_at' => Carbon::create('2023','01','01'), 'updated_at' => Carbon::create('2023','01','01')],
+        ['contenuto' => 'Benvenuto nel nostro servizio online! Tramite questa chat potrai chiedere ulteriori informazioni e assistenza ogni volta che risulti necessario ' , 'data' => Carbon::create('2023','01','01','19','30','00') , 'mittente' => 1 , 'destinatario' => 5,'created_at' => Carbon::create('2023','01','01'), 'updated_at' => Carbon::create('2023','01','01')],
+        ['contenuto' => 'Benvenuto nel nostro servizio online! Tramite questa chat potrai chiedere ulteriori informazioni e assistenza ogni volta che risulti necessario ' , 'data' => Carbon::create('2023','01','01','19','30','00') , 'mittente' => 1 , 'destinatario' => 6,'created_at' => Carbon::create('2023','01','01'), 'updated_at' => Carbon::create('2023','01','01')],
+        ['contenuto' => 'Benvenuto nel nostro servizio online! Tramite questa chat potrai chiedere ulteriori informazioni e assistenza ogni volta che risulti necessario ' , 'data' => Carbon::create('2023','01','01','19','30','00') , 'mittente' => 1 , 'destinatario' => 7,'created_at' => Carbon::create('2023','01','01'), 'updated_at' => Carbon::create('2023','01','01')],
+
+        ]);
+
+
+
+
+
+
         //le foto delle auto  si trovano in public/img/alloggi    perchè ho riutilizzato progetto precedente
         //nel testo della descrizione non posso mettere ' perchè sennò segnala error che si aspetta ] di chiusura e il seed lancia eccezione
 
