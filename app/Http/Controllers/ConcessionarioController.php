@@ -73,6 +73,30 @@ class ConcessionarioController extends Controller{
    public function deletecliente($id) {
         $cliente = $this->users->getThisCliente($id);
         $cliente->delete();
+
+        //devo anche eliminare TUTTI i messaggi dove era presente il cliente eliminato perchè altrimenti la parte dei clienti va in tilt
+        //se prova a leggere dal db dove non c'è più id corrispondente al cliente eliminato
+
+        //quindi vedo quelli dove è destinatario e quelli dove è mittente e poi li elimino tutti
+
+        //recupero id dei messaggi dove $id è destinatario
+        $dest=Messaggi::where('destinatario', '=', $id)->select("id")->get()->toArray();
+        //recupero id dei messaggi dove $id  è mittente
+        $mitt=Messaggi::where('mittente', '=', $id)->select("id")->get()->toArray();
+
+       //ora unisco tutti gli id di questi messaggi in un unico array li unisco
+       $MessToDelete=array_merge($dest,$mitt);
+
+       //ora li elimino
+
+       for($i=0;$i<count($MessToDelete);$i++){
+            $appoggio= Messaggi:: where('id','=',$MessToDelete[$i])->first(); //recupero ogni messaggio tramite il suo id
+            $appoggio->delete();
+        }
+
+
+        //adesso posso attivare il redirect
+
         return  redirect()->route('gestisciclienti')
             ->with('status', 'cliente eliminato correttamente!');
     }
