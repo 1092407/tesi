@@ -33,7 +33,7 @@ class examplechartController extends Controller
 
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati ', 'line', array_values($valori));  //così funziona
+        $chart->dataset('dati ', 'line', array_values($valori)); //così funziona
 
            return view('sample_view', compact('chart'));
 

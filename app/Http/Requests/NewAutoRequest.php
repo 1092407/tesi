@@ -34,7 +34,7 @@ class NewAutoRequest extends FormRequest {
             'marca' => 'required|string|max:30',
             'modello' => 'required|string|max:30',
 
-            'descrizione' => 'required|string|max:2000',
+            'descrizione' => 'required|string|max:80000',
             'foto' => 'sometimes|file|mimes:jpeg,png|max:5000'
 
         ];
