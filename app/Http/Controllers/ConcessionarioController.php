@@ -261,8 +261,9 @@ class ConcessionarioController extends Controller{
 
       $chart = new examplechart;
 
-        $allid=Misurazioni::where("cliente",$cliente)->select("id")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
-        $valori=[];
+        $allid=Misurazioni::where("cliente",$cliente)->select("id")->orderBy("data", "asc")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
+        $valori=[];                                                                                      //li metto già ordinati per data
+                                                                                                        //così vedo tutto dal più vecchio al più recente
 
         for ($i=0;$i<count($allid);$i++){
         $app=Misurazioni::where("id",$allid[$i])->value("temperatura"); //uso una variabile di appoggio
@@ -271,7 +272,8 @@ class ConcessionarioController extends Controller{
 
         $lab=[];
         for ($i=0;$i<count($allid);$i++){
-        $lab[$i]="";
+        $appoggio=Misurazioni::where("id",$allid[$i])->value("data");
+        $lab[$i]=$appoggio;
         }
 
         $chart->labels(array_values($lab));
