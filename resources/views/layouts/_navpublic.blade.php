@@ -21,7 +21,6 @@
         <a href="mailto:info@unirent.it" class="w3-bar-item w3-button w3-hide-small" title="Mandaci un messaggio"><i class="fa fa-envelope"></i> Contattaci</a>
 
 
- <a href="{{route('prova')}}" class="w3-bar-item w3-button w3-hide-small" title="Le auto disponibili dal nostro concessionario"><i class="fa fa-car"></i> prova</a>
 
 
     </div>
