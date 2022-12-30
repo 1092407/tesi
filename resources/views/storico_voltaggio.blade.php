@@ -1,6 +1,6 @@
 @extends('layouts.concessionario')
 
-@section('title', 'storico temperatura')
+@section('title', 'storico voltaggio')
 
 
 @section('content')
@@ -20,22 +20,22 @@
     </div>
   </header>
 
-  <!-- tabella per i dati della temperatura -->
+  <!-- tabella per i dati del voltaggio -->
   <div style="padding-left: 20px; padding-right: 20px;">
     <div class="col-sm-12" style="overflow: scroll">
       <table class="w3-table-all table-striped">
         <thead>
           <tr>
             <td><b style="font-size:18px;">Data rilevazione (y-m-d and hour)</b></td>
-            <td><b style="font-size:18px;">Temperatura espressa in °C</b></td>
+            <td><b style="font-size:18px;">Voltaggio espresso in Volt</b></td>
 
           </tr>
         </thead>
         <tbody>
-          @foreach($datiTemp as $d)
+          @foreach($datiVolt as $d)
           <tr>
             <td>{{$d->data}}</td>
-            <td>{{$d->temperatura}} </td>
+            <td>{{$d->voltaggio}} </td>
 
           @endforeach
         </tbody>

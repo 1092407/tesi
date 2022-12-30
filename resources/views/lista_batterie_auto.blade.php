@@ -68,21 +68,21 @@
 
             <!-- 2 per voltaggio  -->
               <td>
-              <a href = "{{route('cliente.toupdate',$d->id)}}" class="w3-button w3-blue">Storico dati voltaggio</a>
+              <a href = "{{route('volt.storico',$d->id)}}" class="w3-button w3-blue">Storico dati voltaggio</a>
             </td>
 
             <td>
-              <a href = "{{route('cliente.toupdate',$d->id)}}" class="w3-button w3-blue">Grafico voltaggio</a>
+              <a href = "{{route('volt.chart',$d->id)}}" class="w3-button w3-blue">Grafico voltaggio</a>
             </td>
 
 
             <!-- 2 per amperaggio  -->
               <td>
-              <a href = "{{route('cliente.toupdate',$d->id)}}" class="w3-button w3-blue">Storico dati amperaggio</a>
+              <a href = "{{route('amp.storico',$d->id)}}" class="w3-button w3-blue">Storico dati amperaggio</a>
             </td>
 
             <td>
-              <a href = "{{route('cliente.toupdate',$d->id)}}" class="w3-button w3-blue">Grafico amperaggio</a>
+              <a href = "{{route('amp.chart',$d->id)}}" class="w3-button w3-blue">Grafico amperaggio</a>
             </td>
 
 

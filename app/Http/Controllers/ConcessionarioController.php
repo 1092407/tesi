@@ -249,9 +249,9 @@ class ConcessionarioController extends Controller{
      //questa mi fa vedere lo storico dei dati in tabella
      public function ShowStoricoTemp($cliente){
      //il parametro che ricevo è id del cliente che mi serve da ricercare du 'cliente' all'interno di misurazioni (intesa come nella migration)
-     $datiTemp=Misurazioni::where("cliente",$cliente)->select( "temperatura","data","cliente")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
+     $datiTemp=Misurazioni::where("cliente",$cliente)->select( "temperatura","data")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
                                                                                            //sulla batteria di questo determinato cliente
-     return view('storico_dati')
+     return view('storico_dati')  //questa view è solo per la temperatura
                 ->with('datiTemp',$datiTemp);
 
      }
@@ -283,5 +283,91 @@ class ConcessionarioController extends Controller{
 
      }
 
+
+
+     //funzioni per vedere dati sul VOLTAGGIO della batteria
+
+    //questa per vedere dati sullo storico del voltaggio
+     public function ShowStoricoVolt($cliente){
+     //il parametro che ricevo è id del cliente che mi serve da ricercare du 'cliente' all'interno di misurazioni (intesa come nella migration)
+     $datiVolt=Misurazioni::where("cliente",$cliente)->select( "voltaggio","data")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
+                                                                                           //sulla batteria di questo determinato cliente
+     return view('storico_voltaggio')
+                ->with('datiVolt',$datiVolt);
+
+     }
+
+
+
+     //questa mi fa vedere il grafico dei dati
+     public function ShowChartVolt($cliente) {
+
+      $chart = new examplechart;
+
+        $allid=Misurazioni::where("cliente",$cliente)->select("id")->orderBy("data", "asc")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
+        $valori=[];                                                                                      //li metto già ordinati per data
+                                                                                                        //così vedo tutto dal più vecchio al più recente
+
+        for ($i=0;$i<count($allid);$i++){
+        $app=Misurazioni::where("id",$allid[$i])->value("voltaggio"); //uso una variabile di appoggio
+        $valori[$i]=$app;
+        }
+
+        $lab=[];
+        for ($i=0;$i<count($allid);$i++){
+        $appoggio=Misurazioni::where("id",$allid[$i])->value("data");
+        $lab[$i]=$appoggio;
+        }
+
+        $chart->labels(array_values($lab));
+        $chart->dataset('dati voltaggio ', 'line', array_values($valori)); //così funziona
+
+           return view('sample_view', compact('chart'));
+
+     }
+
+
+
+
+    //funzioni per vedere dati su AMPERAGGIO della batteria
+
+    //questa per vedere dati sullo storico del voltaggio
+     public function ShowStoricoAmp($cliente){
+     //il parametro che ricevo è id del cliente che mi serve da ricercare du 'cliente' all'interno di misurazioni (intesa come nella migration)
+     $datiAmp=Misurazioni::where("cliente",$cliente)->select( "amperaggio","data")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
+                                                                                           //sulla batteria di questo determinato cliente
+     return view('storico_amperaggio')
+                ->with('datiAmp',$datiAmp);
+
+     }
+
+
+
+     //questa mi fa vedere il grafico dei dati
+     public function ShowChartAmp($cliente) {
+
+      $chart = new examplechart;
+
+        $allid=Misurazioni::where("cliente",$cliente)->select("id")->orderBy("data", "asc")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
+        $valori=[];                                                                                      //li metto già ordinati per data
+                                                                                                        //così vedo tutto dal più vecchio al più recente
+
+        for ($i=0;$i<count($allid);$i++){
+        $app=Misurazioni::where("id",$allid[$i])->value("amperaggio"); //uso una variabile di appoggio
+        $valori[$i]=$app;
+        }
+
+        $lab=[];
+        for ($i=0;$i<count($allid);$i++){
+        $appoggio=Misurazioni::where("id",$allid[$i])->value("data");
+        $lab[$i]=$appoggio;
+        }
+
+        $chart->labels(array_values($lab));
+        $chart->dataset('dati voltaggio ', 'line', array_values($valori)); //così funziona
+
+           return view('sample_view', compact('chart'));
+
+     }
 
 }//chiude la classe
