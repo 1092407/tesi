@@ -38,6 +38,8 @@ class examplechartController extends Controller
 
       }
 
+
+
       public function provamex(){
         $chart = new examplechart;
 

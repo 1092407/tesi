@@ -58,11 +58,11 @@
 
                <!-- 2 per temperatura  -->
               <td>
-              <a href = "{{route('cliente.toupdate',$d->id)}}" class="w3-button w3-blue">Storico dati temperatura</a>
+              <a href = "{{route('temp.storico',$d->id)}}" class="w3-button w3-blue">Storico dati temperatura</a>
             </td>
 
             <td>
-              <a href = "{{route('cliente.toupdate',$d->id)}}" class="w3-button w3-blue">Grafico temperatura</a>
+              <a href = "{{route('temp.chart',$d->id)}}" class="w3-button w3-blue">Grafico temperatura</a>
             </td>
 
 

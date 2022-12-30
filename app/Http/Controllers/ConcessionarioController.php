@@ -13,6 +13,10 @@ use App\Http\Requests\NewAutoRequest;
 use Illuminate\Support\Facades\File;
 
 use App\Models\Resources\Messaggi;
+use App\Models\Resources\Misurazioni;
+
+
+use App\Charts\examplechart;  //questo mi serve per plottare i dati su grafici di laravel charts
 
 class ConcessionarioController extends Controller{
 
@@ -220,6 +224,9 @@ class ConcessionarioController extends Controller{
          }
 
 
+
+
+
 //PER ANDARE A VEDERE DATI DELLE BATTERIE MONTATE SULLE AUTO DEI CLIENTI
 
 //IDEA PER GESTIRE DATI
@@ -234,6 +241,44 @@ class ConcessionarioController extends Controller{
         $dati =Users::select("id","username")->get(); //id lo passo come parametro e username per capire di chi vedo i dati
         return view('lista_batterie_auto')
                 ->with('dati',$dati);
+     }
+
+
+     //funzioni per vedere dati sulla TEMPERATURA  della batteria
+
+     //questa mi fa vedere lo storico dei dati in tabella
+     public function ShowStoricoTemp($cliente){
+     //il parametro che ricevo è id del cliente che mi serve da ricercare du 'cliente' all'interno di misurazioni (intesa come nella migration)
+     $datiTemp=Misurazioni::where("cliente",$cliente)->select( "temperatura","data","cliente")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
+                                                                                           //sulla batteria di questo determinato cliente
+     return view('storico_dati')
+                ->with('datiTemp',$datiTemp);
+
+     }
+
+     //questa mi fa vedere il grafico dei dati
+     public function ShowChartTemp($cliente) {
+
+      $chart = new examplechart;
+
+        $allid=Misurazioni::where("cliente",$cliente)->select("id")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
+        $valori=[];
+
+        for ($i=0;$i<count($allid);$i++){
+        $app=Misurazioni::where("id",$allid[$i])->value("temperatura"); //uso una variabile di appoggio
+        $valori[$i]=$app;
+        }
+
+        $lab=[];
+        for ($i=0;$i<count($allid);$i++){
+        $lab[$i]="";
+        }
+
+        $chart->labels(array_values($lab));
+        $chart->dataset('dati temperatura ', 'line', array_values($valori)); //così funziona
+
+           return view('sample_view', compact('chart'));
+
      }
 
 
