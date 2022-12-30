@@ -27,7 +27,7 @@ Route::get('/Search','PublicController@CercaAuto')->name('search');  //per cerca
 
 //è una prova per vedere se funzionano charts
 Route::get('/provachart','examplechartController@index')->name('prova'); //per fare una prova e vedere se funzionava cahrt, dopo da sistemare
-Route::get('/provachart2','examplechartController@provamex')->name('prova2');
+
 
 //ROTTE CLIENTI
 Route::view('/Cliente','homecliente')->name('cliente')->middleware('can:isCliente');  //per andare sulla home del cliente
@@ -52,12 +52,20 @@ Route::get('/Concessionario/GestioneClienti/{cliente}','ConcessionarioController
 Route::get('/Concessionario/InserisciAuto','ConcessionarioController@inserisciauto')->name('inserisciauto'); // mi genera la vista per inserire nuova auto
 Route::post('/Concessionario/InserisciAuto','ConcessionarioController@storeauto')->name('inserisciauto_post');  // va messa nella form nella view corrispondente per effettuare la salvataggio nel db
 
-// per gestire modifica o eliminazione
+// per gestire modifica o eliminazione di auto
 Route::get('/Concessionario/ListaAuto','ConcessionarioController@showauto')->name('listaauto');//per vedere lista di tutte le auto
 Route::get('/Concessionario/Auto/{auto}','ConcessionarioController@ShowThisAuto')->name('auto');//per andare a vedere il dettaglio di una detrminata auto
 Route::delete('/Concessionario/EliminaAuto/{auto}','ConcessionarioController@deleteauto')->name('auto.delete');  // per eliminare
 Route::put('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@updateauto')->name('auto.update');// aggiorna dati
 Route::get('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@showAutoToUpdate')->name('auto.toupdate'); //per vedere dati attualemte presenti prima di fare modifiche
+
+//per vedere dati batterie
+Route::get('Concessionario/ListaBatterieClienti','ConcessionarioController@ShowListBatterie')->name('listabatterieclienti');
+
+
+
+
+
 
 
 

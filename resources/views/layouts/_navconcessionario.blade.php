@@ -11,9 +11,7 @@
 
 <a href="{{route('messaggi')}}" class="w3-bar-item w3-button w3-hide-small" title="controlla i tuoi messaggi "><i class="fa fa-telegram"></i> I tuoi messaggi  </a>
 
-
-
-
+<a href="{{route('listabatterieclienti')}}" class="w3-bar-item w3-button w3-hide-small" title="visualizza dati batterie"><i class="fa fa-battery-full"></i> Batterie Auto</a>
 
         <!--Per motivi di sicurezza il logout va fatto in metodo post piuttosto che in metodo get, quindi non possiamo usare un ancora perchè essa invia in maniera fissa una richiesta al server in metodo GET
      -->

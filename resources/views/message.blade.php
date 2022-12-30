@@ -47,7 +47,8 @@
 
                 @can('isFornitore')
                 <!-- per  fornitore intanto lascio qui una parte poi da finire più avanti se lo metto effettivamente  -->
-                @endcan @endauth
+                @endcan
+@endauth
 
 
 <div>

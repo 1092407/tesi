@@ -220,4 +220,21 @@ class ConcessionarioController extends Controller{
          }
 
 
+//PER ANDARE A VEDERE DATI DELLE BATTERIE MONTATE SULLE AUTO DEI CLIENTI
+
+//IDEA PER GESTIRE DATI
+// sulla migration "misurazioni"  il cliente fa riferimento all'id di un cliente --->ogni cliente vede dati della sua batteria
+//qui il concessionario prende tutti gli id dei clienti e poi lui può vedere dati di TUTTE le batterie dei suoi clienti
+//quindi recupero id dei clienti che poi li passo come parametro nei bottoni della tabella presente nella view lista_batterie_auto per
+//cercare tutte le misurazioni dove cliente==id passato
+
+
+  //mi porta alla pagina con tabella di tutti i clienti e bottoni per vedere dati specifici della sua batteria
+        public function ShowListBatterie(){
+        $dati =Users::select("id","username")->get(); //id lo passo come parametro e username per capire di chi vedo i dati
+        return view('lista_batterie_auto')
+                ->with('dati',$dati);
+     }
+
+
 }//chiude la classe
