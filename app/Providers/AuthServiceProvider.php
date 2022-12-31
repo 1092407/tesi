@@ -33,12 +33,12 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasLivello('cliente');
         });
 
-
+       /*
         Gate::define('isFornitore', function($user){
             return $user->hasLivello('fornitore');
         });
+       */
 
-        //questa probabilmente non la uso ma per ora la lascio
         Gate::define('isLoggato',function($user){
             return isset($user);
         });

@@ -50,11 +50,6 @@
                     @endif
                 </div>
 
-
-
-
-
-
             <div class="wrap-input">
                 {{ Form::label('descrizione', 'Descrizione', ['class' => 'label-input']) }}
                 {{ Form::textarea('descrizione', '', ['class' => 'input descrizione', 'id' => 'descrizione']) }}
@@ -66,7 +61,6 @@
                 </ul>
                 @endif
             </div>
-
 
             <div class="container-form-btn">
                 {{ Form::submit('Inserisci', ['class' => 'my-button']) }}

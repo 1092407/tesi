@@ -1886,11 +1886,11 @@ ul.social-media-list img:hover {
     background-size: cover;
 }
 
-/* First image (Logo. Full height) */
+/* First image (Logo. Full height)  prima con immagine vecchia era width a 100*/
 .bgimg-1 {
-    background-image: url("../img/sfondo_tagliato.png");
+    background-image: url("../img/sfondoauto2.jpeg");
     min-height: 60%;
-    min-width: 100%;
+    min-width: 85%;
 }
 
 .w3-wide {
@@ -2371,7 +2371,7 @@ textarea {
     border-collapse: collapse;
     width: 100%;
   }
-  
+
 .table-input-alloggio tr,
 .table-input-alloggio td{
     padding: 8px;
