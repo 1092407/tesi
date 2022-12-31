@@ -98,6 +98,16 @@ class ConcessionarioController extends Controller{
             $appoggio->delete();
         }
 
+        //forse dovrei andare ad eliminare anche tutte le misurazioni inerenti la batteria del cliente eliminato
+        /*
+        //estraggo gli id di tutte le misurazioni che coinvolgono questo cliente
+        $dataToDelete=Misurazioni::where('cliente', '=', $id)->select("id")->get()->toArray();
+
+        for($j=0;$j<count($dataToDelete);$j++){
+            $app= Misurazioni:: where('id','=',$dataToDelete[$j])->first(); //recupero ogni misurazione tramite il suo id
+            $app->delete();
+        }
+       */
 
         //adesso posso attivare il redirect
 
@@ -277,7 +287,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati temperatura ', 'line', array_values($valori)); //così funziona
+        $chart->dataset('dati temperatura ', 'line', array_values($valori));
 
            return view('sample_view', compact('chart'));
 
