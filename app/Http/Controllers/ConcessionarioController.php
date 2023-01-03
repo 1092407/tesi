@@ -380,4 +380,15 @@ class ConcessionarioController extends Controller{
 
      }
 
+
+     //questa per vedere lo storico di tutti dati insieme nella tabella
+      public function ShowStoricoAll($cliente){
+     //il parametro che ricevo è id del cliente che mi serve da ricercare du 'cliente' all'interno di misurazioni (intesa come nella migration)
+     $datiAll=Misurazioni::where("cliente",$cliente)->select("temperatura","voltaggio", "amperaggio","data")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
+                                                                                           //sulla batteria di questo determinato cliente
+     return view('storico_alldata')
+                ->with('datiAll',$datiAll);
+
+     }
+
 }//chiude la classe

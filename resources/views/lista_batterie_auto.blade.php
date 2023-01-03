@@ -40,6 +40,8 @@
           <tr>
             <td><b style="font-size:18px;">Cliente</b></td>
 
+            <td><b style="font-size:18px;">Tutti i dati</b></td>
+
             <td colspan=2><b style="font-size:18px;">Temperatura</b></td>
             <td colspan=2><b style="font-size:18px;">Voltaggio</b></td>
             <td colspan=2><b style="font-size:18px;">Amperaggio</b></td>
@@ -54,6 +56,11 @@
 
 
             <td>{{$d->username}}</td>
+
+            <!--  per vedere storico di tutti i dati in una tabella  -->
+            <td>
+              <a href = "{{route('alldata.storico',$d->id)}}" class="w3-button w3-blue">Storico tutti dati</a>
+            </td>
 
 
                <!-- 2 per temperatura  -->
