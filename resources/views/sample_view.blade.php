@@ -1,10 +1,8 @@
 @extends('layouts.provalayoutchart')
 
-@section('title', 'prova chart ')
+@section('title', ' chart dati')
 
 @section('content')
-
-
 
 
 
