@@ -13,7 +13,7 @@
 <a href="{{route('MyData')}}" class="w3-bar-item w3-button w3-hide-small" title="Visualizza i dati del tuo profilo"><i class="fa fa-user-circle-o"></i> I tuoi dati</a>
 
 
-<a href="{{route('MyData')}}" class="w3-bar-item w3-button w3-hide-small" title="Visualizza i dati ralativi alla batteria della tua auto"><i class="fa fa-battery-three-quarters"></i> La tua batteria auto</a>
+<a href="{{route('MyBattery')}}" class="w3-bar-item w3-button w3-hide-small" title="Visualizza i dati ralativi alla batteria della tua auto"><i class="fa fa-battery-three-quarters"></i> La tua batteria auto</a>
 
 
 

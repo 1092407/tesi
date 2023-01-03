@@ -59,7 +59,7 @@
 
             <!--  per vedere storico di tutti i dati in una tabella  -->
             <td>
-              <a href = "{{route('alldata.storico',$d->id)}}" class="w3-button w3-blue">Storico tutti dati</a>
+              <a href = "{{route('alldata.storico',$d->id)}}" class="w3-button w3-green">Storico tutti dati</a>
             </td>
 
 

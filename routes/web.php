@@ -21,7 +21,6 @@ Route::view('/Privacy','privacy_cookies')->name('privacy');  //pagina info priva
 Route::view('/Regolamento','termini_condizioni')->name('termini_condizioni'); //pagina info varie
 Route::get('/Auto','PublicController@showAuto')->name('lista_auto'); //per vedere marca e modelli disponibili per acquisto
 Route::get('/Auto/{auto}','PublicController@ShowThisAuto')->name('auto_dettaglio'); //per andare a vedere dettagli di un'auto
-
 Route::get('/Search','PublicController@CercaAuto')->name('search');  //per cercare auto secondo la sua marca (es:fiat,audi,...)
 
 
@@ -31,8 +30,9 @@ Route::get('/provachart','examplechartController@index')->name('prova'); //per f
 
 //ROTTE CLIENTI
 Route::view('/Cliente','homecliente')->name('cliente')->middleware('can:isCliente');  //per andare sulla home del cliente
-Route::get('/Cliente/DatiPersonali','ClienteController@ShowMyData')->name('MyData');
+Route::get('/Cliente/DatiPersonali','ClienteController@ShowMyData')->name('MyData'); //vede dati personali
 
+Route::get('/Cliente/DatiMiaBatteria','ClienteController@DatiMiaBatteria')->name('MyBattery'); //vede dati della mia batteria
 
 //ROTTE CONCESSIONARIO
 
@@ -62,12 +62,12 @@ Route::get('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@showA
 //per vedere dati batterie
 Route::get('Concessionario/ListaBatterieClienti','ConcessionarioController@ShowListBatterie')->name('listabatterieclienti');  //per anadare a vedere tabella generale con tutti clienti
 
-Route::get('Concessionario/StoricoDatiBatteria/{cliente}','ConcessionarioController@ShowStoricoAll')->name('alldata.storico');
+Route::get('Concessionario/StoricoDatiBatteria/{cliente}','ConcessionarioController@ShowStoricoAll')->name('alldata.storico'); //tabella per tutti i dati
 
-Route::get('Concessionario/StoricoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowStoricoTemp')->name('temp.storico');
-Route::get('Concessionario/GraficoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowChartTemp')->name('temp.chart');
+Route::get('Concessionario/StoricoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowStoricoTemp')->name('temp.storico'); //vedere solo tabella dati batteria
+Route::get('Concessionario/GraficoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowChartTemp')->name('temp.chart');//vedere grafico solo dati temperatura
 
-Route::get('Concessionario/StoricoVoltaggioBatteria/{cliente}','ConcessionarioController@ShowStoricoVolt')->name('volt.storico');
+Route::get('Concessionario/StoricoVoltaggioBatteria/{cliente}','ConcessionarioController@ShowStoricoVolt')->name('volt.storico');  //alti dati sono meccanismi analoghi a quelli della temperatura
 Route::get('Concessionario/GraficoVoltaggioBatteria/{cliente}','ConcessionarioController@ShowChartVolt')->name('volt.chart');
 
 Route::get('Concessionario/StoricoAmperaggioBatteria/{cliente}','ConcessionarioController@ShowStoricoAmp')->name('amp.storico');
@@ -85,13 +85,10 @@ Route::get('/Chat/{destinatario}', 'MessaggiController@showChat')->name('convers
 Route::post('/Send/{destinatario}','MessaggiController@rispondiMessaggio')->name('messaggio.send')->middleware('auth'); //serve,una volta aperta la conversazione con un certo destinatario, a rispondergli
 
 
-
-
 //Sottoinsime di Auth::routes()
 Route::get('login','Auth\LoginController@showLoginForm')->name('login'); //Rotta che genera la form GET
 Route::post('login','Auth\LoginController@login');//Usata al submit della form che attiva il processo di autenticazione
 Route::post('logout','Auth\LoginController@logout')->name('logout');
-
 
 //queste non servono perchè gli utenti li registra solo lo concessionario  da area privata
 //e il concessionario è pre registrato nel db quindi la fase di registrazione non la permettiamo come azione pubblica
