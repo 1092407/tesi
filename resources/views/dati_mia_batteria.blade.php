@@ -83,13 +83,13 @@
 
               <!-- se è troppo alta la batteria si scarica velocemente  -->
               @if ($d->amperaggio>70)
-              <td>Velocità elevata:in questo modo autonomia sarà breve </td>
+              <td>Consumo elevato:ridurre la velocità per aumentare autonomia </td>
               @endif
 
 
               <!-- se è basso si scarica più lentamente e dura di più   -->
               @if ($d->amperaggio<=70 and $d->amperaggio!=0)
-              <td> Velocità ottimale:in questo modo autonomia sarà lunga </td>
+              <td> Consumo ottimale </td>
               @endif
 
               <!-- se è a zero allora è  auto spenta   -->

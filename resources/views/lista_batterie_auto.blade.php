@@ -19,7 +19,7 @@
       <br>
       Cliccando su "storico dati" vedrai tutti i dati presenti nel database in una tabella
       mentre cliccando su "grafico" vedrai gli stessi dati
-       plottati su un grafico , ma soltanto i più recenti
+       plottati su un grafico
       </h4>
 
        <br>

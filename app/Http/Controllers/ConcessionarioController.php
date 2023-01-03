@@ -374,7 +374,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati voltaggio ', 'line', array_values($valori)); //così funziona
+        $chart->dataset('dati amperaggio ', 'line', array_values($valori)); //così funziona
 
            return view('sample_view', compact('chart'));
 
