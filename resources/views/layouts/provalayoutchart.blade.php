@@ -29,8 +29,8 @@
 
  @include('layouts/_navconcessionario')
 
+<!-- questi style per avere grafico allargato e staccato dalla navbar -->
 
-//questi style per avere grafico allargato e staccato dalla navbar
         <div class="w3-content w3-padding" style="max-width:1654px ; margin-top:115px">
             @yield('content')
         </div>

@@ -287,7 +287,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati temperatura ', 'line', array_values($valori));
+        $chart->dataset('dati temperatura ', 'line', array_values($valori))->options(['borderColor'=>'black','fill'=> 'false']);
 
            return view('sample_view', compact('chart'));
 
@@ -330,7 +330,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati voltaggio ', 'line', array_values($valori)); //così funziona
+        $chart->dataset('dati voltaggio', 'line', array_values($valori))->options(['borderColor'=>'red','fill'=> 'false']); //così funziona
 
            return view('sample_view', compact('chart'));
 
@@ -374,7 +374,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati amperaggio ', 'line', array_values($valori)); //così funziona
+        $chart->dataset('dati amperaggio ', 'line', array_values($valori))->options(['borderColor'=>'green','fill'=> 'false']); //così funziona
 
            return view('sample_view', compact('chart'));
 
@@ -390,5 +390,51 @@ class ConcessionarioController extends Controller{
                 ->with('datiAll',$datiAll);
 
      }
+
+
+     //questa per vedere dati di tutte le misurazioni
+     public function ShowChartAll($cliente){
+
+     $chart = new examplechart;
+
+        $allid=Misurazioni::where("cliente",$cliente)->select("id")->orderBy("data", "asc")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
+        $valoriTemp=[]; //una per  ogni tipo di dato
+        $valoriVolt=[];
+        $valoriAmp=[];
+
+        //ora popolo i vettori con i dati del db per poi passarli al grafico
+
+        for ($i=0;$i<count($allid);$i++){
+        $app1=Misurazioni::where("id",$allid[$i])->value("temperatura"); //uso una variabile di appoggio
+        $valoriTemp[$i]=$app1;
+        }
+
+        for ($i=0;$i<count($allid);$i++){
+        $app2=Misurazioni::where("id",$allid[$i])->value("voltaggio"); //uso una variabile di appoggio
+        $valoriVolt[$i]=$app2;
+        }
+
+        for ($i=0;$i<count($allid);$i++){
+        $app3=Misurazioni::where("id",$allid[$i])->value("amperaggio"); //uso una variabile di appoggio
+        $valoriAmp[$i]=$app3;
+        }
+
+
+        //questa per segnare le date sulle label:ne uso una sola perchè sono uguali
+        $lab=[];
+        for ($i=0;$i<count($allid);$i++){
+        $appoggio=Misurazioni::where("id",$allid[$i])->value("data");
+        $lab[$i]=$appoggio;
+        }
+
+        $chart->labels(array_values($lab));
+
+        $chart->dataset('temperatura', 'line', array_values($valoriTemp))->options(['borderColor'=>'black','fill'=> 'false']);
+        $chart->dataset('voltaggio', 'line', array_values($valoriVolt))->options(['borderColor'=>'red','fill'=> 'false']);
+        $chart->dataset('amperaggio', 'line', array_values($valoriAmp))->options(['borderColor'=>'green','fill'=> 'false']); //fill false non mi colora area tra asse x e la linea
+
+      return view('sample_view', compact('chart'));
+     }
+
 
 }//chiude la classe

@@ -63,6 +63,8 @@ Route::get('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@showA
 Route::get('Concessionario/ListaBatterieClienti','ConcessionarioController@ShowListBatterie')->name('listabatterieclienti');  //per anadare a vedere tabella generale con tutti clienti
 
 Route::get('Concessionario/StoricoDatiBatteria/{cliente}','ConcessionarioController@ShowStoricoAll')->name('alldata.storico'); //tabella per tutti i dati
+Route::get('Concessionario/ChartDatiBatteria/{cliente}','ConcessionarioController@ShowChartAll')->name('alldata.chart'); //tabella per tutti i dati
+
 
 Route::get('Concessionario/StoricoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowStoricoTemp')->name('temp.storico'); //vedere solo tabella dati batteria
 Route::get('Concessionario/GraficoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowChartTemp')->name('temp.chart');//vedere grafico solo dati temperatura
