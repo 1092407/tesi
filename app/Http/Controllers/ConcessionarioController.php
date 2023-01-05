@@ -248,7 +248,8 @@ class ConcessionarioController extends Controller{
 
   //mi porta alla pagina con tabella di tutti i clienti e bottoni per vedere dati specifici della sua batteria
         public function ShowListBatterie(){
-        $dati =Users::select("id","username")->get(); //id lo passo come parametro e username per capire di chi vedo i dati
+        //il where mi serve senno prendo anche il concessionario
+        $dati =Users::where("livello","cliente")->select("id","username")->get(); //id lo passo come parametro e username per capire di chi vedo i dati
         return view('lista_batterie_auto')
                 ->with('dati',$dati);
      }
