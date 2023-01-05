@@ -14,7 +14,10 @@
     <div class="w3-container">
 
 
-
+<!-- se non ci sono dati lo segnalo appositamente con una scritta -->
+   @if(count($datiAll)==0)
+   <h4> Nessun dato attualmente presente </h4>
+   @endif
 
 
     </div>

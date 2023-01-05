@@ -14,11 +14,14 @@
     <div class="w3-container">
 
 
-
-
-
     </div>
   </header>
+
+<!-- se non ci sono dati lo segnalo appositamente con una scritta -->
+   @if(count($datiVolt)==0)
+   <h4> Nessun dato attualmente presente </h4>
+   @endif
+
 
   <!-- tabella per i dati del voltaggio -->
   <div style="padding-left: 20px; padding-right: 20px;">

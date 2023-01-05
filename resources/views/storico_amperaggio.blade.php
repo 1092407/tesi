@@ -13,7 +13,10 @@
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
 
-
+<!-- se non ci sono dati lo segnalo appositamente con una scritta -->
+   @if(count($datiAmp)==0)
+   <h4> Nessun dato attualmente presente </h4>
+   @endif
 
 
 
