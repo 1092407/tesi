@@ -75,6 +75,7 @@ Route::get('Concessionario/GraficoVoltaggioBatteria/{cliente}','ConcessionarioCo
 Route::get('Concessionario/StoricoAmperaggioBatteria/{cliente}','ConcessionarioController@ShowStoricoAmp')->name('amp.storico');
 Route::get('Concessionario/GraficoAmperaggioBatteria/{cliente}','ConcessionarioController@ShowChartAmp')->name('amp.chart');
 
+Route::get('Concessionario/DatiStatoAttualeBatteria/{cliente}','ConcessionarioController@DatiAttualiBatteria')->name('dati.attuali.batteria'); //concessionario vede dati attuali batteria come vede il cliente
 
 
 

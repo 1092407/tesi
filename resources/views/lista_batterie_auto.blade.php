@@ -39,7 +39,7 @@
         <thead>
           <tr>
             <td><b style="font-size:18px;">Cliente</b></td>
-
+            <td><b style="font-size:18px;">Stato attuale</b></td>
 
             <td colspan=2><b style="font-size:18px;">Tutti i dati</b></td>
 
@@ -57,6 +57,11 @@
 
 
             <td>{{$d->username}}</td>
+
+            <!--  per vedere  dati attuali presi da ultima misurazione  -->
+            <td>
+              <a href = "{{route('dati.attuali.batteria',$d->id)}}" class="w3-button w3-green">Stato attaule</a>
+            </td>
 
             <!-- 2 per vedere storico di tutti i dati in una tabella o chart  -->
             <td>

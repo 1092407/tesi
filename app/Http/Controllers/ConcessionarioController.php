@@ -438,4 +438,28 @@ class ConcessionarioController extends Controller{
      }
 
 
+
+
+     //questa fa vedere lo stato attuale della batteria:è la stessa cosa di quello che può vedere un cliente dalla propria area riservata
+     //SE NON CI SONO MISURAZIONI PER UN CERTO CLIENTE ALLORA HO UN ERRORE PERCHE LA FUNZIONE MAX VUOLE ALMENO UN ELEMENTO
+     //quindi la riga   if (count($tutteledate)==0) {$tutteledate=["niente1","niente2"];}  serve solo ad evitare un errore
+     //perchè se $tutteledate non recupera niente dal db allora la popolo io a caso evitando che ci sia un errore
+
+     public function DatiAttualiBatteria($cliente){
+    //devo recuperare i dati dell'ultima misurazione perchè è quella che rappresenta lo stato attuale
+    //della batteria. quindi tra tutte le misurazioni che riguardano la batteria del clinete in questione
+    //devo anadare poi a cercare la più recente
+    $tutteledate=Misurazioni::where("cliente",$cliente)->select("data")->get()->toArray();
+
+    if (count($tutteledate)==0) {$tutteledate=["niente1","niente2"];}
+
+    $recente=max($tutteledate);  //mi prende la data più grande e quindi la più recente
+    $dati=Misurazioni::where("cliente",$cliente)->where("data",$recente)->get(); //recupero tutte le misurazioni dell'ultima data
+
+    return view('stato_attaule_batteria_Conc')
+                ->with('dati',$dati);
+
+    }
+
+
 }//chiude la classe
