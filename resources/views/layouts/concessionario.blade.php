@@ -38,7 +38,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
               <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">SmartAuto</span>
             </div>
             <div class="w3-display-middle" style="white-space:nowrap;">
-              <span class="logo w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">BENTORNATO NELLA ZONA CONCESSIONARIO</span>
+              <span class="logo w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">BENTORNATO NELLA ZONA CASA AUTOMOBILISTICA</span>
             </div>
         </div>
 
