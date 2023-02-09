@@ -47,7 +47,7 @@
             <td colspan=2><b style="font-size:18px;">Battery Voltage [V]</b></td>
             <td colspan=2><b style="font-size:18px;">Battery Current [A]</b></td>
 
-
+            <td colspan=2><b style="font-size:18px;">SOC % </b></td>
 
           </tr>
         </thead>
@@ -102,6 +102,15 @@
               <a href = "{{route('amp.chart',$d->id)}}" class="w3-button w3-blue">Grafico amperaggio</a>
             </td>
 
+
+           <!-- 2 per SOC  -->
+              <td>
+              <a href = "{{route('soc.storico',$d->id)}}" class="w3-button w3-blue">Storico dati SOC</a>
+            </td>
+
+            <td>
+              <a href = "{{route('soc.chart',$d->id)}}" class="w3-button w3-blue">Grafico SOC</a>
+            </td>
 
 
           @endforeach

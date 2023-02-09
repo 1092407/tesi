@@ -1,6 +1,6 @@
 @extends('layouts.concessionario')
 
-@section('title', 'storico temperatura')
+@section('title', 'storico soc')
 
 
 @section('content')
@@ -15,7 +15,7 @@
 
 
 <!-- se non ci sono dati lo segnalo appositamente con una scritta -->
-   @if(count($datiTemp)==0)
+   @if(count($datiSoc)==0)
    <h4> Nessun dato attualmente presente </h4>
    @endif
 
@@ -31,15 +31,15 @@
         <thead>
           <tr>
             <td><b style="font-size:18px;">Time</b></td>
-            <td><b style="font-size:18px;">Temperature [°C]</b></td>
+            <td><b style="font-size:18px;">SOC [%]</b></td>
 
           </tr>
         </thead>
         <tbody>
-          @foreach($datiTemp as $d)
+          @foreach($datiSoc as $d)
           <tr>
             <td>{{$d->data}}</td>
-            <td>{{$d->temperatura}} </td>
+            <td>{{$d->soc}} </td>
 
           @endforeach
         </tbody>

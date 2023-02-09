@@ -385,7 +385,7 @@ class CasaAutoController extends Controller{
      //questa per vedere lo storico di tutti dati insieme nella tabella
       public function ShowStoricoAll($cliente){
      //il parametro che ricevo è id del cliente che mi serve da ricercare du 'cliente' all'interno di misurazioni (intesa come nella migration)
-     $datiAll=Misurazioni::where("cliente",$cliente)->select("temperatura","voltaggio", "amperaggio","data")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
+     $datiAll=Misurazioni::where("cliente",$cliente)->select("temperatura","voltaggio","soc","amperaggio","data")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
                                                                                            //sulla batteria di questo determinato cliente
      return view('storico_alldata')
                 ->with('datiAll',$datiAll);
@@ -395,15 +395,12 @@ class CasaAutoController extends Controller{
 
      //questa per vedere dati di tutte le misurazioni
      public function ShowChartAll($cliente){
-
      $chart = new examplechart;
-
         $allid=Misurazioni::where("cliente",$cliente)->select("id")->orderBy("data", "asc")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
         $valoriTemp=[]; //una per  ogni tipo di dato
         $valoriVolt=[];
         $valoriAmp=[];
-
-        //ora popolo i vettori con i dati del db per poi passarli al grafico
+        $valoriSoc=[];  //ora popolo i vettori con i dati del db per poi passarli al grafico
 
         for ($i=0;$i<count($allid);$i++){
         $app1=Misurazioni::where("id",$allid[$i])->value("temperatura"); //uso una variabile di appoggio
@@ -420,19 +417,22 @@ class CasaAutoController extends Controller{
         $valoriAmp[$i]=$app3;
         }
 
-        //questa per segnare le date sulle label:ne uso una sola perchè sono uguali per i vari tipi di dati che recupero
-        $lab=[];
+        for ($i=0;$i<count($allid);$i++){
+        $app4=Misurazioni::where("id",$allid[$i])->value("soc");
+        $valoriSoc[$i]=$app4;
+        }
+
+        $lab=[];  //questa per segnare le date sulle label:ne uso una sola perchè sono uguali per i vari tipi di dati che recupero
         for ($i=0;$i<count($allid);$i++){
         $appoggio=Misurazioni::where("id",$allid[$i])->value("data");
         $lab[$i]=$appoggio;
         }
 
         $chart->labels(array_values($lab));
-
         $chart->dataset('Temperature [°C]', 'line', array_values($valoriTemp))->options(['borderColor'=>'black','fill'=> 'false']);
         $chart->dataset('Battery Voltage [V]', 'line', array_values($valoriVolt))->options(['borderColor'=>'red','fill'=> 'false']);
         $chart->dataset('Battery Current [A]', 'line', array_values($valoriAmp))->options(['borderColor'=>'green','fill'=> 'false']); //fill false non mi colora area tra asse x e la linea
-
+        $chart->dataset('SOC [%]', 'line', array_values($valoriSoc))->options(['borderColor'=>'blue','fill'=> 'false']);
       return view('sample_view', compact('chart'));
      }
 
@@ -464,6 +464,46 @@ class CasaAutoController extends Controller{
                 ->with('dati',$dati);
 
     }
+
+
+
+//questa per vedere dati sullo storico della soc
+     public function ShowStoricoSoc($cliente){
+     //il parametro che ricevo è id del cliente che mi serve da ricercare du 'cliente' all'interno di misurazioni (intesa come nella migration)
+     $datiSoc=Misurazioni::where("cliente",$cliente)->select( "soc","data")->orderBy("data", "desc")->get(); //recupero dati su temperatura e datamisurazione
+                                                                                           //sulla batteria di questo determinato cliente
+     return view('storico_soc')
+                ->with('datiSoc',$datiSoc);
+
+     }
+
+//questa mi fa vedere il grafico dei dati SOC
+     public function ShowChartSoc($cliente) {
+
+      $chart = new examplechart;
+
+        $allid=Misurazioni::where("cliente",$cliente)->select("id")->orderBy("data", "asc")->get()->toArray();  //sono id delle misurazioni delle batteria di $cliente
+        $valori=[];                                                                                      //li metto già ordinati per data
+                                                                                                        //così vedo tutto dal più vecchio al più recente
+
+        for ($i=0;$i<count($allid);$i++){
+        $app=Misurazioni::where("id",$allid[$i])->value("soc"); //uso una variabile di appoggio
+        $valori[$i]=$app;
+        }
+
+        $lab=[];
+        for ($i=0;$i<count($allid);$i++){
+        $appoggio=Misurazioni::where("id",$allid[$i])->value("data");
+        $lab[$i]=$appoggio;
+        }
+
+        $chart->labels(array_values($lab));
+        $chart->dataset('SOC %', 'line', array_values($valori))->options(['borderColor'=>'blue','fill'=> 'false']);
+
+           return view('sample_view', compact('chart'));
+
+     }
+
 
 
 }//chiude la classe

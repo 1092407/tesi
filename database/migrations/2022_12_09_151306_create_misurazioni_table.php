@@ -27,7 +27,7 @@ class CreateMisurazioniTable extends Migration
             $table->float('temperatura');
             $table->float('voltaggio');
             $table->float('amperaggio');
-
+            $table->float('soc');
 
         });
     }

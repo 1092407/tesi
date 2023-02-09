@@ -33,6 +33,7 @@
             <td><b style="font-size:18px;">Temperature [°C]</b></td>
             <td><b style="font-size:18px;">Battery Voltage [V]</b></td>
             <td><b style="font-size:18px;">Battery Current [A]</b></td>
+            <td><b style="font-size:18px;">SOC [%]</b></td>
 
           </tr>
         </thead>
@@ -43,6 +44,7 @@
             <td>{{$d->temperatura}} </td>
             <td>{{$d->voltaggio}} </td>
             <td>{{$d->amperaggio}} </td>
+            <td>{{$d->soc}} </td>
 
           @endforeach
         </tbody>

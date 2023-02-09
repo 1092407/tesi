@@ -80,6 +80,9 @@ Route::get('CasaAuto/GraficoAmperaggioBatteria/{cliente}','CasaAutoController@Sh
 Route::get('CasaAuto/DatiStatoAttualeBatteria/{cliente}','CasaAutoController@DatiAttualiBatteria')->name('dati.attuali.batteria'); //concessionario vede dati attuali batteria come vede il cliente
 
 
+Route::get('CasaAuto/StoricoSocBatteria/{cliente}','CasaAutoController@ShowStoricoSoc')->name('soc.storico');
+Route::get('CasaAuto/GraficoSocBatteria/{cliente}','CasaAutoController@ShowChartSoc')->name('soc.chart');
+
 
 
 
