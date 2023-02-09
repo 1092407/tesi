@@ -38,9 +38,9 @@
           <tr>
 
 
-            <td colspan=2><b style="font-size:18px;">Temperatura</b></td>    <!-- metto due colonne perchè riporto il valore del dato e un messaggio alto basso carico   a seconda del valore con degli if nelle direttive blade  -->
+            <td colspan=2><b style="font-size:18px;">Temperatura [°C]</b></td>    <!-- metto due colonne perchè riporto il valore del dato e un messaggio alto basso carico   a seconda del valore con degli if nelle direttive blade  -->
             <td colspan=2><b style="font-size:18px;">Livello di carica</b></td>   <!-- dipende dal voltaggio  -->
-            <td colspan=2><b style="font-size:18px;">Autonomia residua</b></td>  <!-- amperaggio lo uso per capire quanta corrente usa e quindi ci posso fare delle analisi sulla guida o se è accesa/spenta o quanto consuma -->
+            <td colspan=2><b style="font-size:18px;">Consumi [A]</b></td>  <!-- amperaggio lo uso per capire quanta corrente usa e quindi ci posso fare delle analisi sulla guida o se è accesa/spenta o quanto consuma -->
 
 
 
@@ -52,43 +52,61 @@
           @foreach($dati as $d)
           <tr>
 
-               <!-- 2 per temperatura  -->
-              <td>{{$d->temperatura}} </td>
+<!-- SETTAGGIO DEI DATI COME DA DATASET REALE e uguale a quello della view stato_attuale_batteria_Conc -->
 
-              @if ($d->temperatura>70)
+<!-- TEMPERATURA-->
+               <!-- 2 per temperatura  -->
+              <td>{{$d->temperatura}}  </td>
+
+              @if ($d->temperatura>35)
               <td>temperatura troppo alta:rischio surriscldamento </td>
               @endif
 
-              @if ($d->temperatura<=70)
+              @if ($d->temperatura<=35)
               <td> temperatura ottimale </td>
               @endif
 
 
-            <!-- 2 per voltaggio e quindi per la carica della bateria  -->
-              <td>{{$d->voltaggio}} % </td>
 
-              @if ($d->voltaggio>30)
+
+<!-- VOLTAGGIO-->
+<!-- anche qui come nella parte concessionario/casa Automobilistica uso la direttiva php per ricavarmi la percentuale-->
+<!-- perchè d voltaggio è dato grezzo e non la percentuale rapportata a 400V  -->
+
+             @php
+            $voltArrivato=$d->voltaggio;
+            $perc=$voltArrivato/4;
+            @endphp
+
+            <!-- 2 per voltaggio e quindi per la carica della bateria  -->
+              <td> @php  echo $perc @endphp % </td>
+
+              @if ($perc>30)
               <td> carica ancora ottimale </td>
               @endif
 
-              @if ($d->voltaggio<=30)
+              @if ($perc<=30)
               <td> Ricaricare il prima possibile  </td>
               @endif
 
+<!--ho messo perc al posto di dvoltaggio dentro gli ifi e funziona -->
 
+
+
+<!-- AMPERAGGIO-->
             <!-- 2 per amperaggio  -->
             <!-- lo uso per vedere autonomia residua : se è troppo basso si scarica tardi altrimenti dura ancora parecchio  -->
               <td>{{$d->amperaggio}} </td>
 
 
               <!-- se è troppo alta la batteria si scarica velocemente  -->
-              @if ($d->amperaggio>70)
+              @if ($d->amperaggio>120)
               <td>Consumo elevato:ridurre la velocità per aumentare autonomia </td>
               @endif
 
 
               <!-- se è basso si scarica più lentamente e dura di più   -->
-              @if ($d->amperaggio<=70 and $d->amperaggio!=0)
+              @if ($d->amperaggio<=120 and $d->amperaggio!=0)
               <td> Consumo ottimale </td>
               @endif
 

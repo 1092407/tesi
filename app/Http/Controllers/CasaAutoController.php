@@ -18,11 +18,11 @@ use App\Models\Resources\Misurazioni;
 
 use App\Charts\examplechart;  //questo mi serve per plottare i dati su grafici di laravel charts
 
-class ConcessionarioController extends Controller{
+class CasaAutoController extends Controller{
 
  protected $users;   // sarebbe users model
     public function __construct(){
-        $this->middleware('can:isConcessionario');
+        $this->middleware('can:isCasaAuto');
         $this->users = new Users;// creo istanza di users per chiamre delle funzioni piu avanti per gestire clienti
         $this->auto = new Auto; //creo istanza di auto
     }
@@ -288,7 +288,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati temperatura ', 'line', array_values($valori))->options(['borderColor'=>'black','fill'=> 'false']);
+        $chart->dataset('Temperature [°C]', 'line', array_values($valori))->options(['borderColor'=>'black','fill'=> 'false']);
 
            return view('sample_view', compact('chart'));
 
@@ -331,7 +331,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati voltaggio', 'line', array_values($valori))->options(['borderColor'=>'red','fill'=> 'false']); //così funziona
+        $chart->dataset('Battery Voltage [V]', 'line', array_values($valori))->options(['borderColor'=>'red','fill'=> 'false']); //così funziona
 
            return view('sample_view', compact('chart'));
 
@@ -375,7 +375,7 @@ class ConcessionarioController extends Controller{
         }
 
         $chart->labels(array_values($lab));
-        $chart->dataset('dati amperaggio ', 'line', array_values($valori))->options(['borderColor'=>'green','fill'=> 'false']); //così funziona
+        $chart->dataset('Battery Current [A]', 'line', array_values($valori))->options(['borderColor'=>'green','fill'=> 'false']); //così funziona
 
            return view('sample_view', compact('chart'));
 
@@ -411,17 +411,16 @@ class ConcessionarioController extends Controller{
         }
 
         for ($i=0;$i<count($allid);$i++){
-        $app2=Misurazioni::where("id",$allid[$i])->value("voltaggio"); //uso una variabile di appoggio
+        $app2=Misurazioni::where("id",$allid[$i])->value("voltaggio");
         $valoriVolt[$i]=$app2;
         }
 
         for ($i=0;$i<count($allid);$i++){
-        $app3=Misurazioni::where("id",$allid[$i])->value("amperaggio"); //uso una variabile di appoggio
+        $app3=Misurazioni::where("id",$allid[$i])->value("amperaggio");
         $valoriAmp[$i]=$app3;
         }
 
-
-        //questa per segnare le date sulle label:ne uso una sola perchè sono uguali
+        //questa per segnare le date sulle label:ne uso una sola perchè sono uguali per i vari tipi di dati che recupero
         $lab=[];
         for ($i=0;$i<count($allid);$i++){
         $appoggio=Misurazioni::where("id",$allid[$i])->value("data");
@@ -430,9 +429,9 @@ class ConcessionarioController extends Controller{
 
         $chart->labels(array_values($lab));
 
-        $chart->dataset('temperatura', 'line', array_values($valoriTemp))->options(['borderColor'=>'black','fill'=> 'false']);
-        $chart->dataset('voltaggio', 'line', array_values($valoriVolt))->options(['borderColor'=>'red','fill'=> 'false']);
-        $chart->dataset('amperaggio', 'line', array_values($valoriAmp))->options(['borderColor'=>'green','fill'=> 'false']); //fill false non mi colora area tra asse x e la linea
+        $chart->dataset('Temperature [°C]', 'line', array_values($valoriTemp))->options(['borderColor'=>'black','fill'=> 'false']);
+        $chart->dataset('Battery Voltage [V]', 'line', array_values($valoriVolt))->options(['borderColor'=>'red','fill'=> 'false']);
+        $chart->dataset('Battery Current [A]', 'line', array_values($valoriAmp))->options(['borderColor'=>'green','fill'=> 'false']); //fill false non mi colora area tra asse x e la linea
 
       return view('sample_view', compact('chart'));
      }
@@ -455,6 +454,11 @@ class ConcessionarioController extends Controller{
 
     $recente=max($tutteledate);  //mi prende la data più grande e quindi la più recente
     $dati=Misurazioni::where("cliente",$cliente)->where("data",$recente)->get(); //recupero tutte le misurazioni dell'ultima data
+
+   //dal voltaggio io mi ricavo la batteria residua in percentuale
+   //dalla view ho priblemi con @php a prendere il dato e a farci una divisione
+   //quindi tento di accedere a $dati e settare voltaggio già a % dividendo per la capacità max della batteria che è 400V
+
 
     return view('stato_attaule_batteria_Conc')
                 ->with('dati',$dati);

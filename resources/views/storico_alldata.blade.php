@@ -29,10 +29,10 @@
       <table class="w3-table-all table-striped">
         <thead>
           <tr>
-            <td><b style="font-size:18px;">Data rilevazione (y-m-d and hour)</b></td>
-            <td><b style="font-size:18px;">Temperatura in °C</b></td>
-            <td><b style="font-size:18px;">Voltaggio in Volt</b></td>
-            <td><b style="font-size:18px;">Amperaggio  in Ampere</b></td>
+            <td><b style="font-size:18px;">Time</b></td>
+            <td><b style="font-size:18px;">Temperature [°C]</b></td>
+            <td><b style="font-size:18px;">Battery Voltage [V]</b></td>
+            <td><b style="font-size:18px;">Battery Current [A]</b></td>
 
           </tr>
         </thead>

@@ -34,14 +34,13 @@ class LoginController extends Controller
     protected function redirectTo() {
         $livello= auth()->user()->livello; // estraggo il livello dall'utente attualmente autenticato
         switch($livello){
-            case 'concessionario': return '/Concessionario';
+            case 'casaauto': return '/CasaAuto';
                     break;
 
             case 'cliente': return '/Cliente';
                     break;
 
-            case 'fornitore': return '/Fornitore';
-                    break;
+
 
             default: return '/';
         }

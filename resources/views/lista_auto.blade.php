@@ -34,7 +34,7 @@ E' implementata la ricerca parziale :  ad esempio scrivendo "fia" o solo "f" com
 
 @isset($auto)
 
-<p class="w3-margin" style='padding-left:1%; padding-right:1%;'>Auto attualmente disponibili presso il nostro concessionario  </b></p>
+<p class="w3-margin" style='padding-left:1%; padding-right:1%;'>Ecco le auto che sono attualmente disponibili </b></p>
 
 @if (session('status'))
 <div class="alert success">
@@ -51,8 +51,8 @@ E' implementata la ricerca parziale :  ad esempio scrivendo "fia" o solo "f" com
         <div class="w3-third w3-container w3-margin-bottom annuncio" >
             @include('helpers/alloggioImage',['attrs'=>"w3-hover-opacity cursor",'imgFile'=>$automobile->foto])
             <div class="w3-container w3-white">
-                <p class="price"><b> Modello--> {{ $automobile->modello }}</b></p>
-                <p class="title"><b> Marca--> {{$automobile->marca}}</b></p>
+                <p class="price"><b> Modello: {{ $automobile->modello }}</b></p>
+                <p class="title"><b> Marca: {{$automobile->marca}}</b></p>
 
             </div>
         </div>

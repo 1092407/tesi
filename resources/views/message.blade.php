@@ -37,7 +37,7 @@
 <!-- Navbar (sit on top) -->
 
 @auth
-                @can('isConcessionario')
+                @can('isCasaAuto')
                 @include('layouts/_navconcessionario')
                 @endcan
 
@@ -45,9 +45,7 @@
                 @include('layouts/_navcliente')
                 @endcan
 
-                @can('isFornitore')
-                <!-- per  fornitore intanto lascio qui una parte poi da finire più avanti se lo metto effettivamente  -->
-                @endcan
+
 @endauth
 
 

@@ -43,9 +43,9 @@
 
             <td colspan=2><b style="font-size:18px;">Tutti i dati</b></td>
 
-            <td colspan=2><b style="font-size:18px;">Temperatura</b></td>
-            <td colspan=2><b style="font-size:18px;">Voltaggio</b></td>
-            <td colspan=2><b style="font-size:18px;">Amperaggio</b></td>
+            <td colspan=2><b style="font-size:18px;">Temperature [°C]</b></td>
+            <td colspan=2><b style="font-size:18px;">Battery Voltage [V]</b></td>
+            <td colspan=2><b style="font-size:18px;">Battery Current [A]</b></td>
 
 
 

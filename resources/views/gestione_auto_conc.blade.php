@@ -33,8 +33,8 @@
         <div class="w3-third w3-container w3-margin-bottom annuncio" >
             @include('helpers/alloggioImage',['attrs'=>"w3-hover-opacity cursor",'imgFile'=>$automobile->foto])
             <div class="w3-container w3-white">
-                <p class="price"><b> Modello--> {{ $automobile->modello }}</b></p>
-                <p class="title"><b> Marca--> {{$automobile->marca}}</b></p>
+                <p class="price"><b> Modello: {{ $automobile->modello }}</b></p>
+                <p class="title"><b> Marca: {{$automobile->marca}}</b></p>
 
             </div>
         </div>

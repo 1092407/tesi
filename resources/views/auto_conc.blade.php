@@ -37,11 +37,11 @@
 
                 <div>
                    <div style="padding-top:10px;">
-                    <span style="font-size:32px; color:black;"> Marca--> {{$auto->marca}} </span>
+                    <span style="font-size:32px; color:black;"> Marca: {{$auto->marca}} </span>
                     <br>
                     <br>
                     <br>
-                    <span style="font-size:32px; color:black;"> Modello--> {{$auto->modello}}</span>
+                    <span style="font-size:32px; color:black;"> Modello: {{$auto->modello}}</span>
                     <br>
 
 

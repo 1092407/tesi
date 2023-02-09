@@ -34,48 +34,50 @@ Route::get('/Cliente/DatiPersonali','ClienteController@ShowMyData')->name('MyDat
 
 Route::get('/Cliente/DatiMiaBatteria','ClienteController@DatiMiaBatteria')->name('MyBattery'); //vede dati della mia batteria
 
-//ROTTE CONCESSIONARIO
+//ROTTE CASA AUTOMOBILISTICA
+// prima questo livello si chiamava "concessionario":nomi rotte con "/" cambiate , il controller per ora si chiama ConcessionarioController
+//ma alcune rotte si possono ancora chiamare concessionario
 
-Route::view('/Concessionario','homeconcessionario')->name('concessionario')->middleware('can:isConcessionario');  //per andare sulla home del concessionario
+Route::view('/CasaAuto','homeconcessionario')->name('concessionario')->middleware('can:isCasaAuto');  //per andare sulla home del concessionario
 
 //per registrare nuovo cliente
-Route::get('/Concessionario/RegistraCliente','ConcessionarioController@registraclienti')->name('registraclienti'); // mi genera la vista per inserire nuovi clienti
-Route::post('/Concessionario/RegistraCliente','ConcessionarioController@storecliente')->name('registraclienti_post');  // va messa nella form nella view corrispondente per effettuare la registrazione nel db
+Route::get('/CasaAuto/RegistraCliente','CasaAutoController@registraclienti')->name('registraclienti'); // mi genera la vista per inserire nuovi clienti
+Route::post('/CasaAuto/RegistraCliente','CasaAutoController@storecliente')->name('registraclienti_post');  // va messa nella form nella view corrispondente per effettuare la registrazione nel db
 
 // per modificare o eliminare un cliente
-Route::get('Concessionario/GestioneClienti','ConcessionarioController@showclienti')->name('gestisciclienti'); // porta alla vista che mi fa gestire i clienti
-Route::delete('/Concessionario/GestioneClienti/{cliente}','ConcessionarioController@deletecliente')->name('cliente.delete');  // per eliminare
-Route::put('/Concessionario/GestioneClienti/{cliente}','ConcessionarioController@updatecliente')->name('cliente.update');// aggiorna dati
-Route::get('/Concessionario/GestioneClienti/{cliente}','ConcessionarioController@showclienteToUpdate')->name('cliente.toupdate'); // va vedere i dati presenti nel db e che posso modificare
+Route::get('CasaAuto/GestioneClienti','CasaAutoController@showclienti')->name('gestisciclienti'); // porta alla vista che mi fa gestire i clienti
+Route::delete('/CasaAuto/GestioneClienti/{cliente}','CasaAutoController@deletecliente')->name('cliente.delete');  // per eliminare
+Route::put('/CasaAuto/GestioneClienti/{cliente}','CasaAutoController@updatecliente')->name('cliente.update');// aggiorna dati
+Route::get('/CasaAuto/GestioneClienti/{cliente}','CasaAutoController@showclienteToUpdate')->name('cliente.toupdate'); // va vedere i dati presenti nel db e che posso modificare
 
 //per aggiungere una nuova auto nel catalogo
-Route::get('/Concessionario/InserisciAuto','ConcessionarioController@inserisciauto')->name('inserisciauto'); // mi genera la vista per inserire nuova auto
-Route::post('/Concessionario/InserisciAuto','ConcessionarioController@storeauto')->name('inserisciauto_post');  // va messa nella form nella view corrispondente per effettuare la salvataggio nel db
+Route::get('/CasaAuto/InserisciAuto','CasaAutoController@inserisciauto')->name('inserisciauto'); // mi genera la vista per inserire nuova auto
+Route::post('/CasaAuto/InserisciAuto','CasaAutoController@storeauto')->name('inserisciauto_post');  // va messa nella form nella view corrispondente per effettuare la salvataggio nel db
 
 // per gestire modifica o eliminazione di auto
-Route::get('/Concessionario/ListaAuto','ConcessionarioController@showauto')->name('listaauto');//per vedere lista di tutte le auto
-Route::get('/Concessionario/Auto/{auto}','ConcessionarioController@ShowThisAuto')->name('auto');//per andare a vedere il dettaglio di una detrminata auto
-Route::delete('/Concessionario/EliminaAuto/{auto}','ConcessionarioController@deleteauto')->name('auto.delete');  // per eliminare
-Route::put('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@updateauto')->name('auto.update');// aggiorna dati
-Route::get('/Concessionario/ModificaAuto/{auto}','ConcessionarioController@showAutoToUpdate')->name('auto.toupdate'); //per vedere dati attualemte presenti prima di fare modifiche
+Route::get('/CasaAuto/ListaAuto','CasaAutoController@showauto')->name('listaauto');//per vedere lista di tutte le auto
+Route::get('/CasaAuto/Auto/{auto}','CasaAutoController@ShowThisAuto')->name('auto');//per andare a vedere il dettaglio di una detrminata auto
+Route::delete('/CasaAuto/EliminaAuto/{auto}','CasaAutoController@deleteauto')->name('auto.delete');  // per eliminare
+Route::put('/CasaAuto/ModificaAuto/{auto}','CasaAutoController@updateauto')->name('auto.update');// aggiorna dati
+Route::get('/CasaAuto/ModificaAuto/{auto}','CasaAutoController@showAutoToUpdate')->name('auto.toupdate'); //per vedere dati attualemte presenti prima di fare modifiche
 
 //per vedere dati batterie
-Route::get('Concessionario/ListaBatterieClienti','ConcessionarioController@ShowListBatterie')->name('listabatterieclienti');  //per anadare a vedere tabella generale con tutti clienti
+Route::get('CasaAuto/ListaBatterieClienti','CasaAutoController@ShowListBatterie')->name('listabatterieclienti');  //per anadare a vedere tabella generale con tutti clienti
 
-Route::get('Concessionario/StoricoDatiBatteria/{cliente}','ConcessionarioController@ShowStoricoAll')->name('alldata.storico'); //tabella per tutti i dati
-Route::get('Concessionario/ChartDatiBatteria/{cliente}','ConcessionarioController@ShowChartAll')->name('alldata.chart'); //tabella per tutti i dati
+Route::get('CasaAuto/StoricoDatiBatteria/{cliente}','CasaAutoController@ShowStoricoAll')->name('alldata.storico'); //tabella per tutti i dati
+Route::get('CasaAuto/ChartDatiBatteria/{cliente}','CasaAutoController@ShowChartAll')->name('alldata.chart'); //tabella per tutti i dati
 
 
-Route::get('Concessionario/StoricoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowStoricoTemp')->name('temp.storico'); //vedere solo tabella dati batteria
-Route::get('Concessionario/GraficoTempeaturaBatteria/{cliente}','ConcessionarioController@ShowChartTemp')->name('temp.chart');//vedere grafico solo dati temperatura
+Route::get('CasaAuto/StoricoTempeaturaBatteria/{cliente}','CasaAutoController@ShowStoricoTemp')->name('temp.storico'); //vedere solo tabella dati batteria
+Route::get('CasaAuto/GraficoTempeaturaBatteria/{cliente}','CasaAutoController@ShowChartTemp')->name('temp.chart');//vedere grafico solo dati temperatura
 
-Route::get('Concessionario/StoricoVoltaggioBatteria/{cliente}','ConcessionarioController@ShowStoricoVolt')->name('volt.storico');  //alti dati sono meccanismi analoghi a quelli della temperatura
-Route::get('Concessionario/GraficoVoltaggioBatteria/{cliente}','ConcessionarioController@ShowChartVolt')->name('volt.chart');
+Route::get('CasaAuto/StoricoVoltaggioBatteria/{cliente}','CasaAutoController@ShowStoricoVolt')->name('volt.storico');  //alti dati sono meccanismi analoghi a quelli della temperatura
+Route::get('CasaAuto/GraficoVoltaggioBatteria/{cliente}','CasaAutoController@ShowChartVolt')->name('volt.chart');
 
-Route::get('Concessionario/StoricoAmperaggioBatteria/{cliente}','ConcessionarioController@ShowStoricoAmp')->name('amp.storico');
-Route::get('Concessionario/GraficoAmperaggioBatteria/{cliente}','ConcessionarioController@ShowChartAmp')->name('amp.chart');
+Route::get('CasaAuto/StoricoAmperaggioBatteria/{cliente}','CasaAutoController@ShowStoricoAmp')->name('amp.storico');
+Route::get('CasaAuto/GraficoAmperaggioBatteria/{cliente}','CasaAutoController@ShowChartAmp')->name('amp.chart');
 
-Route::get('Concessionario/DatiStatoAttualeBatteria/{cliente}','ConcessionarioController@DatiAttualiBatteria')->name('dati.attuali.batteria'); //concessionario vede dati attuali batteria come vede il cliente
+Route::get('CasaAuto/DatiStatoAttualeBatteria/{cliente}','CasaAutoController@DatiAttualiBatteria')->name('dati.attuali.batteria'); //concessionario vede dati attuali batteria come vede il cliente
 
 
 

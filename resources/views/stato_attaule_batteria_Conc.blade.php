@@ -51,43 +51,60 @@
           @foreach($dati as $d)
           <tr>
 
-               <!-- 2 per temperatura  -->
-              <td>{{$d->temperatura}} </td>
+<!-- TEMPERATURA-->
 
-              @if ($d->temperatura>70)
+               <!-- 2 per temperatura dove range ottimale è tra 10 e 25 gradi celsius -->
+              <td>{{$d->temperatura}} [°C] </td>
+
+              @if ($d->temperatura>35)
               <td>temperatura troppo alta:rischio surriscldamento </td>
               @endif
 
-              @if ($d->temperatura<=70)
+              @if ($d->temperatura<=35)
               <td> temperatura ottimale </td>
               @endif
 
 
-            <!-- 2 per voltaggio e quindi per la carica della bateria  -->
-              <td>{{$d->voltaggio}} % </td>
 
-              @if ($d->voltaggio>30)
+<!-- VOLTAGGIO-->
+
+             <!-- $d->voltaggio è il dato in volt che arriva ma io lo voglio dividere per 400 che è il max della batteria-->
+             <!-- per avere la % sarebbe diviso 400 e poi per 100 quindi faccio subito diviso 4-->
+            @php
+            $voltArrivato=$d->voltaggio;
+            $perc=$voltArrivato/4;
+            @endphp
+
+            <!-- 2 per voltaggio e quindi per la carica della bateria dove le batterie sono da 400V -->
+            <td> @php  echo $perc @endphp % </td>
+
+
+              @if ($perc>30)
               <td> carica ancora ottimale </td>
               @endif
 
-              @if ($d->voltaggio<=30)
+              @if ($perc<=30)
               <td> Ricaricare il prima possibile  </td>
               @endif
 
+<!--ho messo perc al posto di dvoltaggio dentro gli ifi e funziona -->
 
+
+
+<!-- AMPERAGGIO-->
             <!-- 2 per amperaggio  -->
             <!-- lo uso per vedere autonomia residua : se è troppo basso si scarica tardi altrimenti dura ancora parecchio  -->
-              <td>{{$d->amperaggio}} </td>
+              <td>{{$d->amperaggio}} [A] </td>
 
 
               <!-- se è troppo alta la batteria si scarica velocemente  -->
-              @if ($d->amperaggio>70)
+              @if ($d->amperaggio>120)
               <td>Consumo elevato:ridurre la velocità per aumentare autonomia </td>
               @endif
 
 
               <!-- se è basso si scarica più lentamente e dura di più   -->
-              @if ($d->amperaggio<=70 and $d->amperaggio!=0)
+              @if ($d->amperaggio<=120 and $d->amperaggio!=0)
               <td> Consumo ottimale </td>
               @endif
 
