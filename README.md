@@ -1,3 +1,12 @@
+### Progetto tesi triennale Giorgio Olivieri
+
+Questo è il progetto per la tesi di laurea triennale in "Ingegneria Informatica e dell' automazione " UNIVPM
+
+
+
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
