@@ -7,6 +7,8 @@ This project is based on Laravel v6 ( https://laravel.com/docs/6.x ) and is a we
 The main focus is the real time monitoring of battery data both for customer and seller from a dataset. The library for plotting data is LaravelCharts (https://charts.erik.cat/)
 In this case there's not a MQTT service for real time uploading od battery data  but the db was manually populated with data from a real car. 
 
+More details about the web app are described in the file "WEB APP details.pdf"
+
 To test the web app see the file "istruzioni.pdf"
 
 
